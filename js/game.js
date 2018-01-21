@@ -1,7 +1,7 @@
 var now = Date.now();
 var delta = 0;
 var ballsToThrow = [];
-var marginBottom = 30;
+var marginBottom = 40;
 
 var PuzzleGame = function(){
   this.board = new PuzzleBoard();

@@ -1,7 +1,7 @@
 var BallThrower = function(board) {
   this.angle = 180;
-  this.width = 16;
-  this.height = 80;
+  this.width = 20;
+  this.height = 100;
   this.posX = board.width / 2 ;
   this.posY = board.height - marginBottom ;
 };
@@ -14,7 +14,7 @@ BallThrower.prototype.renderThrower = function(board) {
   board.ctx.fillRect(-this.width / 2, 0, this.width, this.height);
   board.ctx.restore();
   board.ctx.beginPath();
-  board.ctx.arc(board.width / 2, board.height - marginBottom, 30, 0, 2 * Math.PI);
+  board.ctx.arc(board.width / 2, board.height - marginBottom, 40, 0, 2 * Math.PI);
   board.ctx.fill();
 };
 
@@ -29,6 +29,5 @@ BallThrower.prototype.move = function(board, direction) {
 };
 
 BallThrower.prototype.throw = function(ball){
- console.log(ball)
  ball.speed = -8;
 }
