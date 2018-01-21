@@ -10,7 +10,10 @@ BallThrower.prototype.renderThrower = function(board){
   board.ctx.save();
   board.ctx.fillStyle = "#688";
   board.ctx.translate(this.posX, (board.height));
-  board.ctx.rotate((Math.PI / 180) * this.angle);
+  
+  
+    board.ctx.rotate((Math.PI / 180) * this.angle);
+ 
   board.ctx.fillRect( -this.width/2,0, this.width, this.height);
   
   board.ctx.beginPath();
@@ -20,5 +23,13 @@ BallThrower.prototype.renderThrower = function(board){
 }
 
 BallThrower.prototype.move = function(board,direction){
-  this.angle += direction;
+  if(this.angle > 105 && this.angle < 250){
+   this.angle += direction;
+  } 
+  else if(this.angle <= 105){
+    this.angle = 106;
+  }
+  else{
+    this.angle = 249;
+  }
 }
