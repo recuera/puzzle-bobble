@@ -1,7 +1,9 @@
 window.onload = function(){
   var game = new PuzzleGame();
   //game.startGame();
-  setInterval(function(){game.renderGame(game)},1000 / fps);
+  setInterval(function(){
+    game.renderGame(game)
+  },1000 / fps);
   game.startGame()
 
   document.onkeydown = function(e) {
