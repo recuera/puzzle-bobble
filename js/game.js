@@ -7,7 +7,7 @@ var PuzzleGame = function(){
 }
 
 PuzzleGame.prototype.startGame = function(){
- 
+
 }
 
 PuzzleGame.prototype.gameOver = function(){
