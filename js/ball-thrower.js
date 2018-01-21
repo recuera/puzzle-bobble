@@ -29,7 +29,7 @@ BallThrower.prototype.move = function(board, direction) {
 };
 
 BallThrower.prototype.throw = function(game){
- game.newBall.speed = -8;
+ game.newBall.speed = -16;
  console.log(game.thrower.angle)
  game.newBall.angle = game.thrower.angle;
 }
