@@ -1,21 +1,21 @@
 var BallThrower = function(board) {
   this.angle = 180;
   this.width = 16;
-  this.height = 100;
+  this.height = 80;
   this.posX = board.width / 2 ;
-  this.posY = board.height - this.height;
+  this.posY = board.height - marginBottom ;
 };
 
 BallThrower.prototype.renderThrower = function(board) {
+  board.ctx.fillStyle = "#324142";
   board.ctx.save();
-  board.ctx.fillStyle = "#688";
-  board.ctx.translate(this.posX, board.height);
+  board.ctx.translate(this.posX, this.posY);
   board.ctx.rotate(Math.PI / 180 * this.angle);
   board.ctx.fillRect(-this.width / 2, 0, this.width, this.height);
-  board.ctx.beginPath();
-  board.ctx.arc(0, 30, 30, 0, 2 * Math.PI);
-  board.ctx.fill();
   board.ctx.restore();
+  board.ctx.beginPath();
+  board.ctx.arc(board.width / 2, board.height - marginBottom, 30, 0, 2 * Math.PI);
+  board.ctx.fill();
 };
 
 BallThrower.prototype.move = function(board, direction) {
@@ -28,6 +28,7 @@ BallThrower.prototype.move = function(board, direction) {
   }
 };
 
-BallThrower.prototype.throw = function(){
-
+BallThrower.prototype.throw = function(ball){
+ console.log(ball)
+ ball.speed = -8;
 }

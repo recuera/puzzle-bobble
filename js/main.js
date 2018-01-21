@@ -12,6 +12,9 @@ window.onload = function(){
       case 39: // derecha
         game.thrower.move(game.board,3);
         break;
+      case 32:
+        game.thrower.throw(game.newBall);
+      break;
     }
   };
 

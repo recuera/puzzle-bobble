@@ -1,6 +1,7 @@
 var now = Date.now();
 var delta = 0;
 var ballsToThrow = [];
+var marginBottom = 30;
 
 var PuzzleGame = function(){
   this.board = new PuzzleBoard();
@@ -24,5 +25,5 @@ PuzzleGame.prototype.renderGame = function(game){
   if(ballsToThrow.length == 0){
     game.newBall.addBall(game);
   }
-  game.newBall.renderBall(game.board);
+  game.newBall.renderBall(game);
 }

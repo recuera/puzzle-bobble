@@ -3,16 +3,21 @@ var Ball = function(posX,posY,color){
   this.posX = posX;
   this.posY = posY;
   this.color = color;
+  this.speed = 0;
 }
 
 Ball.prototype.addBall = function(game){
-  var newBall = new Ball(game.board.width / 2, game.board.height - this.radius , "#847")
+  var newBall = new Ball(game.board.width / 2, game.board.height - marginBottom , "#3ec6e8")
   ballsToThrow.push(newBall);  
 }
 
-Ball.prototype.renderBall = function(board){
-  board.ctx.beginPath();
-  board.ctx.fillStyle = ballsToThrow[0].color;
-  board.ctx.arc(ballsToThrow[0].posX, ballsToThrow[0].posY, ballsToThrow[0].radius, 0, 2 * Math.PI);
-  board.ctx.fill();
+Ball.prototype.renderBall = function(game){
+  var correctAngle = (game.thrower.angle-90) * Math.PI / 180;
+  ballsToThrow[0].posX += this.speed * Math.cos((correctAngle));
+  ballsToThrow[0].posY += this.speed * Math.sin((correctAngle));
+  game.board.ctx.beginPath();
+  game.board.ctx.fillStyle = ballsToThrow[0].color;
+  game.board.ctx.arc(ballsToThrow[0].posX, ballsToThrow[0].posY, ballsToThrow[0].radius, 0, 2 * Math.PI);
+  game.board.ctx.fill();
+
 }
