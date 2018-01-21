@@ -4,6 +4,7 @@ var Ball = function(posX,posY,color){
   this.posY = posY;
   this.color = color;
   this.speed = 0;
+  this.angle = 0;
 }
 
 Ball.prototype.addBall = function(game){
@@ -22,11 +23,20 @@ Ball.prototype.renderBall = function(game){
 }
 
 Ball.prototype.updatePos = function(game){
-  var correctAngle = (game.thrower.angle-90) * Math.PI / 180;
-  var inTheBoard = ballsToThrow[0].posX > 0 + this.radius - this.speed && ballsToThrow[0].posX < game.board.width - this.radius + this.speed && ballsToThrow[0].posY > 0 + this.radius - this.speed && ballsToThrow[0].posY < game.board.height - this.radius + this.speed;
-  if (!inTheBoard){
+  var correctAngle = (game.newBall.angle-90) * Math.PI / 180;
+  var bounceAngleX = (game.newBall.angle + 90) * Math.PI / 180;
+  var inTheBoard = ballsToThrow[0].posY > 0 + this.radius - this.speed && ballsToThrow[0].posY < game.board.height - this.radius + this.speed;
+  var mustBounce = ballsToThrow[0].posX < 0 + this.radius - this.speed || ballsToThrow[0].posX > game.board.width - this.radius + this.speed;
+  if (mustBounce){
+    game.newBall.angle = -game.newBall.angle;
+    ballsToThrow[0].posX += this.speed * Math.cos((bounceAngleX));
+    ballsToThrow[0].posY += this.speed * Math.sin((correctAngle));
+  }
+  else if (!inTheBoard){
     this.speed = 0;
   }
-  ballsToThrow[0].posX += this.speed * Math.cos((correctAngle));
-  ballsToThrow[0].posY += this.speed * Math.sin((correctAngle));
+  else{
+    ballsToThrow[0].posX += this.speed * Math.cos((correctAngle));
+    ballsToThrow[0].posY += this.speed * Math.sin((correctAngle));
+  }
 }

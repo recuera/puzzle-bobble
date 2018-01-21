@@ -13,7 +13,7 @@ window.onload = function(){
         game.thrower.move(game.board,3);
         break;
       case 32:
-        game.thrower.throw(game.newBall);
+        game.thrower.throw(game);
       break;
     }
   };
