@@ -31,6 +31,7 @@ Ball.prototype.updatePos = function(game){
   }
   else if (this.mustStop(game)){
     this.speed = 0;
+    this.placeBall(this);
     game.topBalls.push(this);
     game.newBall.addBall(game);
   }
@@ -41,7 +42,7 @@ Ball.prototype.updatePos = function(game){
 }
 
 Ball.prototype.mustBounce = function(game){
-  return this.posX < 0 + this.radius + 5 || this.posX > game.board.width - this.radius - 5;
+  return this.posX < 0 + this.radius || this.posX > game.board.width - this.radius;
 }
 
 Ball.prototype.mustStop = function(game){
@@ -52,8 +53,15 @@ Ball.prototype.mustStop = function(game){
       }
     }
   }
-  if(this.posY < 0 + this.radius + 5){
+  if(this.posY < 0 + this.radius){
     return true;
   }
   else{return false;}
+}
+
+Ball.prototype.placeBall = function(ball){
+  var ballRow = Math.floor(ball.posY/60) + 1;
+  ball.posY = 60*ballRow - 30;
+  
+  
 }
