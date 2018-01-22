@@ -1,7 +1,7 @@
 var now = Date.now();
 var delta = 0;
 var fps = 55;
-var ballsToThrow = [];
+//var ballsToThrow = [];
 var marginBottom = 45;
 
 var PuzzleGame = function(){
@@ -9,22 +9,34 @@ var PuzzleGame = function(){
   this.thrower = new BallThrower(this.board);
   this.newBall = new Ball();
   this.score = 0;
+  this.topBalls = []
+ // this.ballsToThrow = [];
 }
 
 PuzzleGame.prototype.startGame = function(){
-
+  this.newBall.addBall(this);
 }
 
 PuzzleGame.prototype.gameOver = function(){
   
 }
 
+PuzzleGame.prototype.renderTopBalls = function(game){
+  for (i = 0; i < game.topBalls.length; i++){ 
+    game.board.ctx.beginPath();
+    game.board.ctx.fillStyle = game.topBalls[i].color;
+    game.board.ctx.arc(game.topBalls[i].posX, game.topBalls[i].posY, game.topBalls[i].radius, 0, 2 * Math.PI);
+    game.board.ctx.fill();
+  }
+}
+
 PuzzleGame.prototype.renderGame = function(game){
   game.board.ctx.clearRect(0, 0, game.board.width, game.board.height);
   game.board.renderBoard();
   game.thrower.renderThrower(game.board);
-  if(ballsToThrow.length == 0){
-    game.newBall.addBall(game);
-  }
+  game.renderTopBalls(this);
+  // if(this.ballsToThrow.length == 0){
+  // //  game.newBall.addBall(game);
+  // }e
   game.newBall.renderBall(game);
 }

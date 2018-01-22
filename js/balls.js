@@ -9,12 +9,11 @@ var Ball = function(posX,posY,color){
 
 Ball.prototype.addBall = function(game){
   game.newBall = new Ball(game.board.width / 2, game.board.height - marginBottom , "#3ec6e8");
-  ballsToThrow.push(game.newBall);
+  //game.ballsToThrow.push(game.newBall);
 }
 
 Ball.prototype.renderBall = function(game){
   this.updatePos(game);
-  game.board.ctx.strokeStyle = '#000';  
   game.board.ctx.beginPath();
   game.board.ctx.fillStyle = this.color;
   game.board.ctx.arc(this.posX, this.posY, this.radius, 0, 2 * Math.PI);
@@ -33,7 +32,8 @@ Ball.prototype.updatePos = function(game){
   }
   else if (this.mustStop(game)){
     this.speed = 0;
-
+    game.topBalls.push(this);
+    game.newBall.addBall(game);
   }
   else{
     this.posX += this.speed * Math.cos(correctAngle);
