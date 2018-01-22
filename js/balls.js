@@ -45,5 +45,15 @@ Ball.prototype.mustBounce = function(game){
 }
 
 Ball.prototype.mustStop = function(game){
-  return this.posY < 0 + this.radius + 5;
+  for (i = 0; i < game.topBalls.length; i++){
+    if(this.posY <= game.topBalls[i].posY + 60){
+      if(this.posX <= game.topBalls[i].posX + 60 && this.posX >= game.topBalls[i].posX - 60){  
+        return true;
+      }
+    }
+  }
+  if(this.posY < 0 + this.radius + 5){
+    return true;
+  }
+  else{return false;}
 }

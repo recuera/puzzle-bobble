@@ -15,7 +15,7 @@ PuzzleGame.prototype.startGame = function(){
 }
 
 PuzzleGame.prototype.gameOver = function(){
-  
+  this.renderGame
 }
 
 PuzzleGame.prototype.renderTopBalls = function(game){
@@ -38,5 +38,5 @@ PuzzleGame.prototype.renderGame = function(game){
   game.newBall.renderBall(game,delta);
   window.requestAnimationFrame(function(){
     game.renderGame(game)
-})
+  })
 }
