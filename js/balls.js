@@ -61,7 +61,13 @@ Ball.prototype.mustStop = function(game){
 
 Ball.prototype.placeBall = function(ball){
   var ballRow = Math.floor(ball.posY/60) + 1;
-  ball.posY = 60*ballRow - 30;
-  
-  
+  ball.posY = 60 * ballRow - 30;
+  console.log(this.posY)
+  if (ballRow % 2 == 0){
+    console.log(this.posX)
+    this.posX = (Math.floor(this.posX/60)) * 60 + 30
+  }
+  else{
+    this.posX = (Math.floor(this.posX/60)) * 60
+  }
 }
