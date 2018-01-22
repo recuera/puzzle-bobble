@@ -46,9 +46,9 @@ Ball.prototype.mustBounce = function(game){
 }
 
 Ball.prototype.mustStop = function(game){
-  var ballDistanceY = (game.newBall.radius * Math.sqrt(3)) / 2;
+  var ballDistanceY = (game.newBall.radius * Math.sqrt(3));
   for (i = 0; i < game.topBalls.length; i++){
-    if(this.posY <= game.topBalls[i].posY + ballDistanceY * 2){
+    if(this.posY <= game.topBalls[i].posY + ballDistanceY ){
       if(this.posX <= game.topBalls[i].posX + 60 && this.posX >= game.topBalls[i].posX - 60){  
         return true;
       }
@@ -61,13 +61,18 @@ Ball.prototype.mustStop = function(game){
 }
 
 Ball.prototype.placeBall = function(ball){
-  var ballRow = Math.floor(ball.posY/60) + 1;
   var ballDistanceY = (ball.radius * Math.sqrt(3)) / 2;
-  ball.posY = (ballDistanceY*2 * ballRow) - ballDistanceY;
-  if (ballRow % 2 == 0){
-    this.posX = (Math.floor(this.posX/60)) * 60 + 30;
+  var ballRow = Math.floor(ball.posY/(ballDistanceY * 2));
+  if (ballRow == 0){
+    ball.posY = 30;
   }
   else{
-    this.posX = (Math.floor(this.posX/60)) * 60;
+    ball.posY = ((ballDistanceY * 2 * ballRow) + ball.radius);
+  }
+  if (ballRow % 2 == 0){
+    ball.posX = (Math.floor((ball.posX + ball.speed)/60)) * 60 + 30;
+  }
+  else{
+    ball.posX = (Math.floor((ball.posX + ball.speed)/60)) * 60;
   }
 }
