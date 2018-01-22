@@ -1,3 +1,5 @@
+var ballColors = ["#3ec6e8","#d11027","#23a85a","#e86800"]
+
 var Ball = function(posX,posY,color){
   this.radius = 30;
   this.posX = posX;
@@ -8,7 +10,8 @@ var Ball = function(posX,posY,color){
 }
 
 Ball.prototype.addBall = function(game){
-  game.newBall = new Ball(game.board.width / 2, game.board.height - marginBottom , "#3ec6e8");
+  randomColor = ballColors[Math.floor(Math.random()*ballColors.length)];
+  game.newBall = new Ball(game.board.width / 2, game.board.height - marginBottom , randomColor);
 }
 
 Ball.prototype.renderBall = function(game,delta){
@@ -78,14 +81,19 @@ Ball.prototype.placeBallY = function(ball,ballDistanceY,ballRow){
 
 Ball.prototype.placeBallX = function(ball,ballRow){
   if (ballRow % 2 == 0){
-    ball.posX = (Math.floor((ball.posX - ball.speed)/60)) * 60 + 30;
+    if(Math.round(ball.posX/60) <= 0){
+      ball.posX = Math.round(ball.posX/60) * 60;
+    }
+    else{
+      ball.posX = Math.round(ball.posX/60) * 60 + 30;
+    }
   }
   else{
     if(ball.posX + ball.speed < 60){
       ball.posX = 60;
     }
     else{
-      ball.posX = (Math.floor((ball.posX - ball.speed)/60)) * 60;
+      ball.posX = Math.round(ball.posX/60) * 60;
     }
   }
 }
