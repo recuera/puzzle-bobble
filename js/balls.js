@@ -63,16 +63,29 @@ Ball.prototype.mustStop = function(game){
 Ball.prototype.placeBall = function(ball){
   var ballDistanceY = (ball.radius * Math.sqrt(3)) / 2;
   var ballRow = Math.floor(ball.posY/(ballDistanceY * 2));
+  ball.placeBallY(ball,ballDistanceY,ballRow);
+  ball.placeBallX(ball,ballRow);
+}
+
+Ball.prototype.placeBallY = function(ball,ballDistanceY,ballRow){
   if (ballRow == 0){
     ball.posY = 30;
   }
   else{
     ball.posY = ((ballDistanceY * 2 * ballRow) + ball.radius);
   }
+}
+
+Ball.prototype.placeBallX = function(ball,ballRow){
   if (ballRow % 2 == 0){
-    ball.posX = (Math.floor((ball.posX + ball.speed)/60)) * 60 + 30;
+    ball.posX = (Math.floor((ball.posX - ball.speed)/60)) * 60 + 30;
   }
   else{
-    ball.posX = (Math.floor((ball.posX + ball.speed)/60)) * 60;
+    if(ball.posX + ball.speed < 60){
+      ball.posX = 60;
+    }
+    else{
+      ball.posX = (Math.floor((ball.posX - ball.speed)/60)) * 60;
+    }
   }
 }
