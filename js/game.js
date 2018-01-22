@@ -1,7 +1,5 @@
 var now = Date.now();
 var delta = 0;
-var fps = 55;
-//var ballsToThrow = [];
 var marginBottom = 45;
 
 var PuzzleGame = function(){
@@ -10,7 +8,6 @@ var PuzzleGame = function(){
   this.newBall = new Ball();
   this.score = 0;
   this.topBalls = []
- // this.ballsToThrow = [];
 }
 
 PuzzleGame.prototype.startGame = function(){
@@ -35,8 +32,8 @@ PuzzleGame.prototype.renderGame = function(game){
   game.board.renderBoard();
   game.thrower.renderThrower(game.board);
   game.renderTopBalls(this);
-  // if(this.ballsToThrow.length == 0){
-  // //  game.newBall.addBall(game);
-  // }e
   game.newBall.renderBall(game);
+  window.requestAnimationFrame(function(){
+    game.renderGame(game)
+})
 }

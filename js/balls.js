@@ -9,7 +9,6 @@ var Ball = function(posX,posY,color){
 
 Ball.prototype.addBall = function(game){
   game.newBall = new Ball(game.board.width / 2, game.board.height - marginBottom , "#3ec6e8");
-  //game.ballsToThrow.push(game.newBall);
 }
 
 Ball.prototype.renderBall = function(game){
