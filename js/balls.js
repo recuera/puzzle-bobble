@@ -81,8 +81,8 @@ Ball.prototype.placeBallY = function(ball,ballDistanceY,ballRow){
 
 Ball.prototype.placeBallX = function(ball,ballRow){
   if (ballRow % 2 == 0){
-    if(Math.round(ball.posX/60) <= 0){
-      ball.posX = Math.round(ball.posX/60) * 60;
+    if(Math.round(ball.posX/60) <= 1){
+      ball.posX = 30;
     }
     else{
       ball.posX = Math.round(ball.posX/60) * 60 + 30;
