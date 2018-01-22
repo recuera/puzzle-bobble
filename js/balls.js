@@ -49,18 +49,21 @@ Ball.prototype.mustBounce = function(game){
 }
 
 Ball.prototype.mustStop = function(game){
+  if(this.posY < 0 + this.radius){
+    return true;
+  }
+  else{
   var ballDistanceY = (game.newBall.radius * Math.sqrt(3));
   for (i = 0; i < game.topBalls.length; i++){
     if(this.posY <= game.topBalls[i].posY + ballDistanceY ){
-      if(this.posX <= game.topBalls[i].posX + 60 && this.posX >= game.topBalls[i].posX - 60){  
+      var posXNow =  game.newBall.posX;
+      if(this.posX <= game.topBalls[i].posX + ballDistanceY && this.posX >= game.topBalls[i].posX - ballDistanceY){  
         return true;
       }
     }
   }
-  if(this.posY < 0 + this.radius){
-    return true;
+  return false;
   }
-  else{return false;}
 }
 
 Ball.prototype.placeBall = function(ball){
