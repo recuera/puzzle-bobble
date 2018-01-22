@@ -28,11 +28,14 @@ PuzzleGame.prototype.renderTopBalls = function(game){
 }
 
 PuzzleGame.prototype.renderGame = function(game){
+  then = now;
+  now = Date.now();
+  delta = now - then;
   game.board.ctx.clearRect(0, 0, game.board.width, game.board.height);
   game.board.renderBoard();
   game.thrower.renderThrower(game.board);
   game.renderTopBalls(this);
-  game.newBall.renderBall(game);
+  game.newBall.renderBall(game,delta);
   window.requestAnimationFrame(function(){
     game.renderGame(game)
 })

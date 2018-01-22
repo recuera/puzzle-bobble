@@ -11,8 +11,8 @@ Ball.prototype.addBall = function(game){
   game.newBall = new Ball(game.board.width / 2, game.board.height - marginBottom , "#3ec6e8");
 }
 
-Ball.prototype.renderBall = function(game){
-  this.updatePos(game);
+Ball.prototype.renderBall = function(game,delta){
+  this.updatePos(game, delta);
   game.board.ctx.beginPath();
   game.board.ctx.fillStyle = this.color;
   game.board.ctx.arc(this.posX, this.posY, this.radius, 0, 2 * Math.PI);
@@ -26,8 +26,8 @@ Ball.prototype.updatePos = function(game){
 
   if (this.mustBounce(game)){
     this.angle = -game.newBall.angle;
-    this.posX += this.speed * Math.cos(bounceAngleX);
-    this.posY += this.speed * Math.sin(correctAngle);
+    this.posX += (this.speed * Math.cos(bounceAngleX)) / 1000 * delta;
+    this.posY += (this.speed * Math.sin(correctAngle)) / 1000 * delta;
   }
   else if (this.mustStop(game)){
     this.speed = 0;
@@ -35,15 +35,15 @@ Ball.prototype.updatePos = function(game){
     game.newBall.addBall(game);
   }
   else{
-    this.posX += this.speed * Math.cos(correctAngle);
-    this.posY += this.speed * Math.sin(correctAngle);
+    this.posX += (this.speed * Math.cos(correctAngle)) / 1000 * delta;
+    this.posY += (this.speed * Math.sin(correctAngle)) / 1000 * delta;
   }
 }
 
 Ball.prototype.mustBounce = function(game){
-  return this.posX < 0 + this.radius - this.speed || this.posX > game.board.width - this.radius + this.speed;
+  return this.posX < 0 + this.radius + 5 || this.posX > game.board.width - this.radius - 5;
 }
 
 Ball.prototype.mustStop = function(game){
-  return this.posY < 0 + this.radius - this.speed;
+  return this.posY < 0 + this.radius + 5;
 }
