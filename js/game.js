@@ -11,7 +11,7 @@ var PuzzleGame = function(){
 }
 
 PuzzleGame.prototype.startGame = function(){
-  this.newBall.addBall(this);
+  this.addBall(this);
 }
 
 PuzzleGame.prototype.gameOver = function(){
@@ -39,4 +39,8 @@ PuzzleGame.prototype.renderGame = function(game){
   window.requestAnimationFrame(function(){
     game.renderGame(game)
   })
+}
+PuzzleGame.prototype.addBall = function(game){
+  randomColor = ballColors[Math.floor(Math.random()*ballColors.length)];
+  game.newBall = new Ball(game.board.width / 2, game.board.height - marginBottom , randomColor);
 }

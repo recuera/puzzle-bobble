@@ -9,11 +9,6 @@ var Ball = function(posX,posY,color){
   this.angle = 0;
 }
 
-Ball.prototype.addBall = function(game){
-  randomColor = ballColors[Math.floor(Math.random()*ballColors.length)];
-  game.newBall = new Ball(game.board.width / 2, game.board.height - marginBottom , randomColor);
-}
-
 Ball.prototype.renderBall = function(game,delta){
   this.updatePos(game, delta);
   game.board.ctx.beginPath();
@@ -36,7 +31,7 @@ Ball.prototype.updatePos = function(game){
     this.speed = 0;
     this.placeBall(this);
     game.topBalls.push(this);
-    game.newBall.addBall(game);
+    game.addBall(game);
   }
   else{
     this.posX += (this.speed * Math.cos(correctAngle)) / 1000 * delta;
@@ -49,21 +44,40 @@ Ball.prototype.mustBounce = function(game){
 }
 
 Ball.prototype.mustStop = function(game){
-  if(this.posY < 0 + this.radius){
-    return true;
-  }
-  else{
-  var ballDistanceY = (game.newBall.radius * Math.sqrt(3));
+  var checkX = this.posX;
+  var checkY = this.posY;
+  
+  var ballDistanceY = game.newBall.radius * Math.sqrt(3);
+  var ballDistanceX =  (ballDistanceY * 2 )/ Math.sqrt(3);
   for (i = 0; i < game.topBalls.length; i++){
-    if(this.posY <= game.topBalls[i].posY + ballDistanceY ){
-      var posXNow =  game.newBall.posX;
-      if(this.posX <= game.topBalls[i].posX + ballDistanceY && this.posX >= game.topBalls[i].posX - ballDistanceY){  
+    if(checkY <= game.topBalls[i].posY + ballDistanceY ){
+      if(checkX <= game.topBalls[i].posX + ballDistanceX && checkX >= game.topBalls[i].posX - ballDistanceX){  
         return true;
       }
     }
   }
-  return false;
+  if(checkY < 0 + this.radius){
+    return true;
   }
+  return false;
+}
+
+Ball.prototype.checkBallsAround = function(game){
+  var checkX = this.posX;
+  var checkY = this.posY;
+  var collidingBalls = [];
+  game.topBalls.map(function(ball){
+    var distanceX = checkX - ball.posX;
+    var distanceY = checkY - ball.posY; 
+    //Math.abs convierte la distancia a un número positivo
+    var distance = Math.abs(Math.sqrt( distanceX * distanceX + distanceY * distanceY ));
+    
+    if(distance <= game.newBall.radius * 2){
+      collidingBalls.push(ball)
+    }
+  })
+  return collidingBalls;
+ 
 }
 
 Ball.prototype.placeBall = function(ball){
