@@ -29,7 +29,7 @@ Ball.prototype.updatePos = function(game){
   }
   else if (this.mustStop(game)){
     this.speed = 0;
-    this.placeBall(this);
+    this.placeBall(this, game);
     game.topBalls.push(this);
     game.addBall(game);
   }
@@ -80,11 +80,25 @@ Ball.prototype.checkBallsAround = function(game){
  
 }
 
-Ball.prototype.placeBall = function(ball){
+Ball.prototype.placeBall = function(ball, game){
+  var originPosX = ball.posX;
+  var originPosY = ball.posY;
   var ballDistanceY = (ball.radius * Math.sqrt(3)) / 2;
   var ballRow = Math.floor(ball.posY/(ballDistanceY * 2));
   ball.placeBallY(ball,ballDistanceY,ballRow);
   ball.placeBallX(ball,ballRow);
+  for (i = 0; i < game.topBalls.length; i++){
+    if(ball.posX == game.topBalls[i].posX && ball.posY == game.topBalls[i].posY){
+      console.log("wrong!!");
+      if(originPosX < game.topBalls[i].posX){
+        ball.posX = game.topBalls[i].posX - ball.radius * 2;
+      }
+      else{
+        ball.posX = game.topBalls[i].posX + ball.radius * 2;
+      }
+
+    }
+  }
 }
 
 Ball.prototype.placeBallY = function(ball,ballDistanceY,ballRow){
