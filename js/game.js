@@ -15,7 +15,7 @@ PuzzleGame.prototype.startGame = function(){
 }
 
 PuzzleGame.prototype.gameOver = function(){
-  this.renderGame
+  window.alert("GAME OVER :(")
 }
 
 PuzzleGame.prototype.renderTopBalls = function(game){

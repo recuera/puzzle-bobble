@@ -117,6 +117,9 @@ Ball.prototype.placeBall = function(ball, game, prevSpeed){
     ballShouldContinue = true;
   }
   if (!ballShouldContinue){
+    if(this.posY > game.board.bottomBarrierPos - this.radius){
+      game.gameOver();
+    }
     game.topBalls.push(this);
     game.addBall(game);
   }
