@@ -45,9 +45,9 @@ Ball.prototype.mustBounce = function(game){
 Ball.prototype.mustStop = function(game){
   var checkX = this.posX;
   var checkY = this.posY;
-  
   var ballDistanceY = game.newBall.radius * Math.sqrt(3);
   var ballDistanceX =  (ballDistanceY * 2 )/ Math.sqrt(3);
+
   for (i = 0; i < game.topBalls.length; i++){
     if(checkY <= game.topBalls[i].posY + ballDistanceY ){
       if(checkX <= game.topBalls[i].posX + ballDistanceX && checkX >= game.topBalls[i].posX - ballDistanceX){  
@@ -70,13 +70,11 @@ Ball.prototype.checkBallsAround = function(game){
     var distanceY = checkY - ball.posY; 
     //Math.abs convierte la distancia a un número positivo
     var distance = Math.abs(Math.sqrt( distanceX * distanceX + distanceY * distanceY ));
-    
     if(distance <= game.newBall.radius * 2){
       collidingBalls.push(ball)
     }
   })
   return collidingBalls;
- 
 }
 
 Ball.prototype.placeBall = function(ball, game, prevSpeed){
@@ -89,7 +87,6 @@ Ball.prototype.placeBall = function(ball, game, prevSpeed){
   ball.placeBallX(ball,ballRow);
   for (i = 0; i < game.topBalls.length; i++){
     if(ball.posX == game.topBalls[i].posX && ball.posY == game.topBalls[i].posY){
-      console.log("on another ball!!");
       if(originPosX < game.topBalls[i].posX){
         ball.posX = game.topBalls[i].posX - ball.radius * 2;
       }
@@ -101,8 +98,6 @@ Ball.prototype.placeBall = function(ball, game, prevSpeed){
   }
   var ballsAround = game.newBall.checkBallsAround(game);
   if(ball.posY > 30 && ballsAround.length == 0){
-    console.log("can continue!!");
-    console.log(prevSpeed)
     ball.posY = originPosY - 2;
     if(ball.angle > -180){
       ball.posX = originPosX + 2;

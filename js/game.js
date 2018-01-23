@@ -18,6 +18,14 @@ PuzzleGame.prototype.gameOver = function(){
   window.alert("GAME OVER :(")
 }
 
+PuzzleGame.prototype.move_thrower = function(){
+  if(this.thrower.moving[0] == true){
+    this.thrower.rotateThrower(this.board,-2);
+  } else if(this.thrower.moving[1] == true){
+    this.thrower.rotateThrower(this.board,2);
+  }
+}
+
 PuzzleGame.prototype.renderTopBalls = function(game){
   for (i = 0; i < game.topBalls.length; i++){ 
     game.board.ctx.beginPath();
@@ -33,6 +41,7 @@ PuzzleGame.prototype.renderGame = function(game){
   delta = now - then;
   game.board.ctx.clearRect(0, 0, game.board.width, game.board.height);
   game.board.renderBoard();
+  this.move_thrower();
   game.thrower.renderThrower(game.board);
   game.renderTopBalls(this);
   game.newBall.renderBall(game,delta);

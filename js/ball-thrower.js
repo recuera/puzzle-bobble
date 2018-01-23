@@ -4,6 +4,7 @@ var BallThrower = function(board) {
   this.height = 100;
   this.posX = board.width / 2 ;
   this.posY = board.height - marginBottom ;
+  this.moving = [false,false]
 };
 
 BallThrower.prototype.renderThrower = function(board) {
@@ -18,7 +19,7 @@ BallThrower.prototype.renderThrower = function(board) {
   board.ctx.fill();
 };
 
-BallThrower.prototype.move = function(board, direction) {
+BallThrower.prototype.rotateThrower = function(board, direction) {
   if (this.angle > 105 && this.angle < 250) {
     this.angle += direction;
   } else if (this.angle <= 105) {
@@ -29,6 +30,6 @@ BallThrower.prototype.move = function(board, direction) {
 };
 
 BallThrower.prototype.throw = function(game){
- game.newBall.speed = -1000;
+ game.newBall.speed = -800;
  game.newBall.angle = game.thrower.angle;
 }
