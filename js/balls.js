@@ -28,10 +28,9 @@ Ball.prototype.updatePos = function(game){
     this.posY += (this.speed * Math.sin(correctAngle)) / 1000 * delta;
   }
   else if (this.mustStop(game)){
+    prevSpeed = this.speed;
     this.speed = 0;
-    this.placeBall(this, game);
-    game.topBalls.push(this);
-    game.addBall(game);
+    this.placeBall(this, game, prevSpeed);
   }
   else{
     this.posX += (this.speed * Math.cos(correctAngle)) / 1000 * delta;
@@ -80,16 +79,17 @@ Ball.prototype.checkBallsAround = function(game){
  
 }
 
-Ball.prototype.placeBall = function(ball, game){
+Ball.prototype.placeBall = function(ball, game, prevSpeed){
   var originPosX = ball.posX;
   var originPosY = ball.posY;
   var ballDistanceY = (ball.radius * Math.sqrt(3)) / 2;
   var ballRow = Math.floor(ball.posY/(ballDistanceY * 2));
+  var ballShouldContinue = false;
   ball.placeBallY(ball,ballDistanceY,ballRow);
   ball.placeBallX(ball,ballRow);
   for (i = 0; i < game.topBalls.length; i++){
     if(ball.posX == game.topBalls[i].posX && ball.posY == game.topBalls[i].posY){
-      console.log("wrong!!");
+      console.log("on another ball!!");
       if(originPosX < game.topBalls[i].posX){
         ball.posX = game.topBalls[i].posX - ball.radius * 2;
       }
@@ -98,6 +98,27 @@ Ball.prototype.placeBall = function(ball, game){
       }
 
     }
+  }
+  var ballsAround = game.newBall.checkBallsAround(game);
+  if(ball.posY > 30 && ballsAround.length == 0){
+    console.log("can continue!!");
+    console.log(prevSpeed)
+    ball.posY = originPosY - 2;
+    if(ball.angle > -180){
+      ball.posX = originPosX + 2;
+    }
+    else{
+      ball.posX = originPosX - 2;
+    }   
+    ball.speed = prevSpeed;
+    var correctAngle = (this.angle - 90) * Math.PI / 180;
+    this.posX += (this.speed * Math.cos(correctAngle)) / 1000 * delta;
+    this.posY += (this.speed * Math.sin(correctAngle)) / 1000 * delta;
+    ballShouldContinue = true;
+  }
+  if (!ballShouldContinue){
+    game.topBalls.push(this);
+    game.addBall(game);
   }
 }
 
