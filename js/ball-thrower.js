@@ -1,6 +1,6 @@
 var BallThrower = function(board) {
   this.angle = 180;
-  this.width = 20;
+  this.width = 16;
   this.height = 100;
   this.posX = board.width / 2 ;
   this.posY = board.height - marginBottom ;

@@ -61,7 +61,7 @@ Ball.prototype.mustStop = function(game){
   return false;
 }
 
-Ball.prototype.checkBallsAround = function(game){
+Ball.prototype.checkBallsAround = function(game, ball){
   var checkX = this.posX;
   var checkY = this.posY;
   var collidingBalls = [];
@@ -75,6 +75,60 @@ Ball.prototype.checkBallsAround = function(game){
     }
   })
   return collidingBalls;
+}
+
+Ball.prototype.removeBalls = function(ballsToRemove,game){
+  ballsToRemove.forEach(function(ball){
+    var i = game.topBalls.indexOf(ball)
+    game.topBalls.splice(i,1)
+  })
+}
+
+Ball.prototype.findMatchingBalls = function(ball,arr){
+  var matchingBalls = arr.filter(function(ballChecked){
+    if(ballChecked.color == ball.color){
+      return ballChecked;
+    }
+  });
+  return matchingBalls;
+}
+
+Ball.prototype.checkBallsRemoval = function(game,ball){
+  var ballsAround = ball.checkBallsAround(game,ball);
+  
+  var matchingBalls = ball.findMatchingBalls(ball,ballsAround);
+
+  if (matchingBalls.length > 0){
+    var keepSearching = true
+    while(keepSearching){
+     for (i = 0; i < matchingBalls.length; i++){
+      var ballsToCheck = matchingBalls[i].checkBallsAround(game,matchingBalls[i]);
+      ballsToCheck = ball.findMatchingBalls(ball,ballsToCheck);
+      ballsToCheck.forEach(function(ballChecked){
+        var addToMatchingballs = [];
+        if(!matchingBalls.includes(ballChecked)){
+          addToMatchingballs.push(ballChecked);
+        }
+        addToMatchingballs.forEach(function(e){
+          matchingBalls.push(e);
+        });
+        if(addToMatchingballs.length == 0){
+          keepSearching = false;
+        };
+      });
+     }
+    }
+  }
+  console.log(matchingBalls)
+  if(matchingBalls.length > 1){
+    game.newBall.removeBalls(matchingBalls,game);
+    game.addBall(game);
+  }
+  else{
+    game.topBalls.push(game.newBall);
+    game.addBall(game);
+  }
+
 }
 
 Ball.prototype.placeBall = function(ball, game, prevSpeed){
@@ -96,7 +150,7 @@ Ball.prototype.placeBall = function(ball, game, prevSpeed){
 
     }
   }
-  var ballsAround = game.newBall.checkBallsAround(game);
+  var ballsAround = game.newBall.checkBallsAround(game,ball);
   if(ball.posY > 30 && ballsAround.length == 0){
     ball.posY = originPosY - 2;
     if(ball.angle > -180){
@@ -111,12 +165,12 @@ Ball.prototype.placeBall = function(ball, game, prevSpeed){
     this.posY += (this.speed * Math.sin(correctAngle)) / 1000 * delta;
     ballShouldContinue = true;
   }
+  //Cuando la bola colisiona y debe detenerse:
   if (!ballShouldContinue){
     if(this.posY > game.board.bottomBarrierPos - this.radius){
       game.gameOver();
     }
-    game.topBalls.push(this);
-    game.addBall(game);
+    this.checkBallsRemoval(game,ball);
   }
 }
 
