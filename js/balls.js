@@ -70,7 +70,7 @@ Ball.prototype.checkBallsAround = function(game, ball){
     var distanceY = checkY - ball.posY; 
     //Math.abs convierte la distancia a un número positivo
     var distance = Math.abs(Math.sqrt( distanceX * distanceX + distanceY * distanceY ));
-    if(distance <= game.newBall.radius * 2){
+    if(distance <= game.newBall.radius * 2.5){
       collidingBalls.push(ball)
     }
   })
@@ -119,9 +119,9 @@ Ball.prototype.checkBallsRemoval = function(game,ball){
      }
     }
   }
-  console.log(matchingBalls)
   if(matchingBalls.length > 1){
     game.newBall.removeBalls(matchingBalls,game);
+    game.newBall.findFloatingBalls(game);
     game.addBall(game);
   }
   else{
@@ -129,6 +129,42 @@ Ball.prototype.checkBallsRemoval = function(game,ball){
     game.addBall(game);
   }
 
+}
+
+Ball.prototype.findFloatingBalls = function(game){
+  game.topBalls.forEach(function(e){
+    var ballGroup = e.checkBallsAround(game,e);
+
+    if (ballGroup.length > 0){
+      var keepSearching = true;
+      while(keepSearching){
+        for(i = 0; i < ballGroup.length; i++){
+          var ballsToCheck = ballGroup[i].checkBallsAround(game,ballGroup[i]);
+            ballsToCheck.forEach(function(e){
+              var addToGroup = [];
+              if(!ballGroup.includes(e)){
+                ballGroup.push(e);
+                addToGroup.push(e);
+              }
+              if(addToGroup.length == 0){
+                keepSearching = false;
+              }
+            })
+
+        }     
+      }
+    }
+    
+    var minPosY = game.board.height;
+    ballGroup.forEach(function(y){
+      if(y.posY < minPosY){
+        minPosY = y.posY;
+      }
+    }) 
+    if(minPosY > 30){
+      game.newBall.removeBalls(ballGroup,game);
+    }
+  })
 }
 
 Ball.prototype.placeBall = function(ball, game, prevSpeed){

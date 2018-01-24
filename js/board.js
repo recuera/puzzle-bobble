@@ -10,6 +10,6 @@ PuzzleBoard.prototype.renderBoard = function(){
   this.ctx.fillStyle = "#daeced";
   this.ctx.fillRect(0, 0, this.width, this.height);
   this.ctx.fillStyle = "#85a5af";
-  this.ctx.fillRect(0, this.bottomBarrierPos, this.width, 10);
+  this.ctx.fillRect(0, this.bottomBarrierPos, this.width, 5);
   this.ctx.restore();
 }
