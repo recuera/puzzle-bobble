@@ -12,7 +12,7 @@ BallThrower.prototype.renderThrower = function(board) {
   board.ctx.save();
   board.ctx.translate(this.posX, this.posY);
   board.ctx.rotate(Math.PI / 180 * this.angle);
-  board.ctx.fillRect(-this.width / 2, 0, this.width, this.height);
+  board.ctx.fillRect( - this.width / 2, 0, this.width, this.height);
   board.ctx.restore();
   board.ctx.beginPath();
   board.ctx.arc(board.width / 2, board.height - marginBottom, 40, 0, 2 * Math.PI);

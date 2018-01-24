@@ -80,7 +80,6 @@ var levels = [
     new Ball(120, row(5), green),
     new Ball(90, row(6), blue),
     new Ball(120, row(7), orange),
-
     new Ball(330, row(0), blue),
     new Ball(390, row(0), blue),
     new Ball(360, row(1), green),

@@ -9,7 +9,7 @@ var PuzzleGame = function() {
   this.topBalls = [];
   this.score = 0;
   this.ballPoints = 5;
-  this.level = 0;
+  this.level = 1;
 };
 
 PuzzleGame.prototype.startGame = function() {
@@ -55,7 +55,7 @@ PuzzleGame.prototype.renderGame = function(game) {
 
 PuzzleGame.prototype.addBall = function(game) {
   randomColor = ballColors[Math.floor(Math.random() * ballColors.length)];
-  game.newBall = new Ball(game.board.width / 2, game.board.height - marginBottom, randomColor);
+  this.newBall = new Ball(this.board.width / 2, this.board.height - marginBottom, randomColor);
 };
 
 PuzzleGame.prototype.addPoints = function(points){

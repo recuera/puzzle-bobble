@@ -13,3 +13,11 @@ PuzzleBoard.prototype.renderBoard = function() {
   this.ctx.fillRect(0, this.bottomBarrierPos, this.width, 5);
   this.ctx.restore();
 };
+
+PuzzleBoard.prototype.updateBoardSize = function(game){
+  this.height = this.height -= 60;
+  this.bottomBarrierPos = this.height - 100;
+  document.getElementById("canvas").setAttribute("height",this.height);
+  game.newBall.posY = game.newBall.posY - 60;
+  game.thrower.posY = this.height - marginBottom;
+}

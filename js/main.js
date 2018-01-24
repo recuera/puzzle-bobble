@@ -7,6 +7,9 @@ window.onload = function() {
   document.getElementById("start").onclick = function() {
     document.getElementById("intro").setAttribute("class", "hidden");
   };
+  document.getElementById("test").onclick = function() {
+    game.board.updateBoardSize(game);
+  };
 
   document.onkeydown = function(e) {
     switch (e.keyCode) {
