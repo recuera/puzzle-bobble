@@ -20,9 +20,9 @@ PuzzleGame.prototype.gameOver = function(){
 
 PuzzleGame.prototype.move_thrower = function(){
   if(this.thrower.moving[0] == true){
-    this.thrower.rotateThrower(this.board,-1.5);
+    this.thrower.rotateThrower(this.board,-1.3);
   } else if(this.thrower.moving[1] == true){
-    this.thrower.rotateThrower(this.board,1.5);
+    this.thrower.rotateThrower(this.board,1.3);
   }
 }
 
