@@ -8,10 +8,12 @@ var PuzzleGame = function() {
   this.newBall = new Ball();
   this.topBalls = [];
   this.score = 0;
-  this.ballPoints = 5
+  this.ballPoints = 5;
+  this.level = 0;
 };
 
 PuzzleGame.prototype.startGame = function() {
+  this.renderLevel();
   this.addBall(this);
 };
 
@@ -60,6 +62,15 @@ PuzzleGame.prototype.addPoints = function(points){
   this.score += points;
   this.updateScore();
 }
+
 PuzzleGame.prototype.updateScore = function(){
   document.getElementById("score").innerHTML = this.score;
+}
+
+PuzzleGame.prototype.updateLevel = function(){
+  document.getElementById("level").innerHTML = (this.level + 1);
+}
+PuzzleGame.prototype.renderLevel = function(){
+  var currentLevel = this.level;
+  this.topBalls = levels[currentLevel];
 }

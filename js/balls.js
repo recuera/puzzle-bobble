@@ -1,4 +1,8 @@
-var ballColors = ["#3ec6e8", "#d11027", "#23a85a", "#e86800"];
+var blue = "#3ec6e8";
+var red = "#d11027";
+var green = "#23a85a";
+var orange = "#e86800";
+var ballColors = [blue, red, green, orange];
 
 var Ball = function(posX, posY, color) {
   this.radius = 30;
@@ -239,3 +243,7 @@ Ball.prototype.placeBallX = function(ball, ballRow) {
     }
   }
 };
+
+Ball.prototype.displayLevelBalls = function(){
+
+}
