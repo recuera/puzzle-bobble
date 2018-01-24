@@ -18,6 +18,7 @@ Ball.prototype.renderBall = function(game, delta) {
   game.board.ctx.beginPath();
   game.board.ctx.fillStyle = this.color;
   game.board.ctx.arc(this.posX, this.posY, this.radius, 0, 2 * Math.PI);
+  game.board.ctx.fill();
 };
 
 Ball.prototype.updatePos = function(game) {
@@ -133,6 +134,9 @@ Ball.prototype.checkBallsRemoval = function(game, ball) {
     game.newBall.removeBalls(matchingBalls, game);
     game.addPoints((matchingBalls.length + 1) * game.ballPoints);
     game.newBall.findFloatingBalls(game);
+    if(game.topBalls.length == 0){
+      game.nextLevel();
+    }
     game.addBall(game);
   } else {
     game.topBalls.push(game.newBall);

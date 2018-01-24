@@ -1,11 +1,11 @@
 window.onload = function() {
   var game = new PuzzleGame();
-  document.getElementById("start").onclick = function(){
-    document.getElementById("intro").setAttribute("class","hidden");
-    game.startGame();
-    window.requestAnimationFrame(function() {
-      game.renderGame(game);
-    });
+  game.startGame();
+  window.requestAnimationFrame(function() {
+    game.renderGame(game);
+  });
+  document.getElementById("start").onclick = function() {
+    document.getElementById("intro").setAttribute("class", "hidden");
   };
 
   document.onkeydown = function(e) {

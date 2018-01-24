@@ -74,3 +74,7 @@ PuzzleGame.prototype.renderLevel = function(){
   var currentLevel = this.level;
   this.topBalls = levels[currentLevel];
 }
+PuzzleGame.prototype.nextLevel = function(){
+  this.level += 1;
+  this.renderLevel();
+}
