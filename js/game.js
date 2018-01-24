@@ -6,8 +6,9 @@ var PuzzleGame = function() {
   this.board = new PuzzleBoard();
   this.thrower = new BallThrower(this.board);
   this.newBall = new Ball();
-  this.score = 0;
   this.topBalls = [];
+  this.score = 0;
+  this.ballPoints = 5
 };
 
 PuzzleGame.prototype.startGame = function() {
@@ -49,7 +50,16 @@ PuzzleGame.prototype.renderGame = function(game) {
     game.renderGame(game);
   });
 };
+
 PuzzleGame.prototype.addBall = function(game) {
   randomColor = ballColors[Math.floor(Math.random() * ballColors.length)];
   game.newBall = new Ball(game.board.width / 2, game.board.height - marginBottom, randomColor);
 };
+
+PuzzleGame.prototype.addPoints = function(points){
+  this.score += points;
+  this.updateScore();
+}
+PuzzleGame.prototype.updateScore = function(){
+  document.getElementById("score").innerHTML = this.score;
+}

@@ -128,6 +128,7 @@ Ball.prototype.checkBallsRemoval = function(game, ball) {
   }
   if (matchingBalls.length > 1) {
     game.newBall.removeBalls(matchingBalls, game);
+    game.addPoints((matchingBalls.length + 1) * game.ballPoints);
     game.newBall.findFloatingBalls(game);
     game.addBall(game);
   } else {
@@ -166,6 +167,7 @@ Ball.prototype.findFloatingBalls = function(game) {
       }
     });
     if (minPosY > 30) {
+      game.addPoints(ballGroup.length * game.ballPoints * 2);
       game.newBall.removeBalls(ballGroup, game);
     }
   });
