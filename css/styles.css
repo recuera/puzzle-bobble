@@ -13,6 +13,14 @@ canvas{
   margin-top: 50px;
   z-index: 3;
 }
+.bg-img{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
+}
 .roof{
   width: 480px;
   height: 700px;
@@ -32,12 +40,40 @@ canvas{
 .intro-cover{
   width: 100vw;
   height: 100vh;
-  background:rgb(243, 243, 243);
   position: absolute;
   top: 0;
   left: 0;
   z-index: 5;
   padding-top: 30vh;
+  background: #fff;
+}
+.intro-cover h1,
+.intro-cover btn{
+  z-index: 5;
+}
+.intro-cover h1{
+  margin-bottom: 50px;
+}
+.intro-content{
+  width: 100vw;
+  position: fixed;
+  background: #fff;
+  height: 330px;
+  padding: 20px;
+  z-index: 3;
+  box-shadow: 0 0 15px 1px rgba(0,0,0,.5);
+}
+.intro-bg{
+  width: 100vw;
+  height: 100vh;
+  background-image: url(../img/bg1.jpg);
+  background-size: cover;
+  background-position: 50% 50%;
+  opacity: .3;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
 }
 .blue{color:#2eb2d3;}
 .red{color: #d11027;}
@@ -57,6 +93,7 @@ canvas{
   padding: 30px 40px;
   transition: all ease .2s;
   border-radius: 20px;
+  outline: none;
 }
 .btn:hover{
   cursor: pointer;

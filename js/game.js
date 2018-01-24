@@ -1,5 +1,6 @@
 var now = Date.now();
 var delta = 0;
+var initialHeight = 700;
 var marginBottom = 40;
 
 var PuzzleGame = function() {
@@ -9,7 +10,7 @@ var PuzzleGame = function() {
   this.topBalls = [];
   this.score = 0;
   this.ballPoints = 5;
-  this.level = 1;
+  this.level = 0;
 };
 
 PuzzleGame.prototype.startGame = function() {
@@ -80,10 +81,11 @@ PuzzleGame.prototype.renderLevel = function(){
 PuzzleGame.prototype.nextLevel = function(){
   this.level += 1;
   this.renderLevel();
+  clearInterval(roofTimer);
 }
 
 PuzzleGame.prototype.setRoofTimer = function(game){
-  window.setInterval(function(){
+  var roofTimer = setInterval(function(){
     game.board.updateBoardSize(game);
-  }, 10000);
+  }, 15000);
 }

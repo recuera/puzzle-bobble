@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Puzzle Bobble</title>
   <link rel="stylesheet" href="css/styles.css">
+  <script src="./js/jquery-3.3.1.min.js"></script>
   <script src="./js/ball-thrower.js"></script>
   <script src="./js/balls.js"></script>
   <script src="./js/board.js"></script>
@@ -17,23 +18,25 @@
 
 
   <div id="intro" class="intro-cover">
-    <h1 class="title">
-      <span class="red">P</span>
-      <span class="blue">U</span>
-      <span class="blue">Z</span>
-      <span class="orange">Z</span>
-      <span class="green">L</span>
-      <span class="orange">E</span> 
-      <span class="orange">_</span> 
-      <span class="red">B</span>
-      <span class="red">O</span>
-      <span class="blue">B</span>
-      <span class="green">B</span>
-      <span class="orange">L</span>
-      <span class="green">E</span>
-
-    </h1>
-    <button id="start" class="btn start-btn">PLAY</button>
+    <div class="intro-bg"></div>
+      <div class="intro-content">
+        <h1 class="title">
+        <span class="red">P</span>
+        <span class="blue">U</span>
+        <span class="blue">Z</span>
+        <span class="orange">Z</span>
+        <span class="green">L</span>
+        <span class="orange">E</span> 
+        <span class="orange">_</span> 
+        <span class="red">B</span>
+        <span class="red">O</span>
+        <span class="blue">B</span>
+        <span class="green">B</span>
+        <span class="orange">L</span>
+        <span class="green">E</span>
+      </h1>
+      <button id="start" class="btn start-btn">PLAY</button>
+    </div>  
   </div>
 
   <canvas id="canvas" width="480" height="700"></canvas>
@@ -44,10 +47,9 @@
     <span id="level">1</span>
   </div>
   <div id="scoreContainer" class="sides score">
-    
     <h3>SCORE</h3>
     <span id="score">0</span>
-    <button id="test" class="btn start-btn">TEST</button>
   </div>
+  <div id="background" class="bg-img"></div>
 </body>
 </html>

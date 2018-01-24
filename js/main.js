@@ -1,14 +1,11 @@
 window.onload = function() {
   var game = new PuzzleGame();
   window.requestAnimationFrame(function() {
-    game.startGame();
     game.renderGame(game);
   });
   document.getElementById("start").onclick = function() {
-    document.getElementById("intro").setAttribute("class", "hidden");
-  };
-  document.getElementById("test").onclick = function() {
-    game.board.updateBoardSize(game);
+    $("#intro").fadeOut(800);
+    game.startGame();
   };
 
   document.onkeydown = function(e) {
