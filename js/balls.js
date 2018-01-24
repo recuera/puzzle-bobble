@@ -1,4 +1,4 @@
-var blue = "#3ec6e8";
+var blue = "#2eb2d3";
 var red = "#d11027";
 var green = "#23a85a";
 var orange = "#e86800";
