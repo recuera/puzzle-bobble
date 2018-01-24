@@ -9,7 +9,7 @@ var PuzzleGame = function() {
   this.topBalls = [];
   this.score = 0;
   this.ballPoints = 5;
-  this.level = 1;
+  this.level = 3;
 };
 
 PuzzleGame.prototype.startGame = function() {
