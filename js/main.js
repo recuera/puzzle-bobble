@@ -1,7 +1,7 @@
 window.onload = function() {
   var game = new PuzzleGame();
-  game.startGame();
   window.requestAnimationFrame(function() {
+    game.startGame();
     game.renderGame(game);
   });
   document.getElementById("start").onclick = function() {

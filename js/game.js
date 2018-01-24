@@ -15,6 +15,7 @@ var PuzzleGame = function() {
 PuzzleGame.prototype.startGame = function() {
   this.renderLevel();
   this.addBall(this);
+  this.setRoofTimer(this);
 };
 
 PuzzleGame.prototype.gameOver = function() {
@@ -70,11 +71,19 @@ PuzzleGame.prototype.updateScore = function(){
 PuzzleGame.prototype.updateLevel = function(){
   document.getElementById("level").innerHTML = (this.level + 1);
 }
+
 PuzzleGame.prototype.renderLevel = function(){
   var currentLevel = this.level;
   this.topBalls = levels[currentLevel];
 }
+
 PuzzleGame.prototype.nextLevel = function(){
   this.level += 1;
   this.renderLevel();
+}
+
+PuzzleGame.prototype.setRoofTimer = function(game){
+  window.setInterval(function(){
+    game.board.updateBoardSize(game);
+  }, 10000);
 }
