@@ -8,6 +8,45 @@ canvas{
   border: 5px solid #85a5af;
   margin-top: 50px;
 }
+.hidden{
+  display: none;
+  z-index: 0;
+}
+.intro-cover{
+  width: 100vw;
+  height: 100vh;
+  background:rgb(243, 243, 243);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  padding-top: 30vh;
+}
+.blue{color:#2eb2d3;}
+.red{color: #d11027;}
+.green{color:#23a85a;}
+.orange{color:#e86800;}
+.title{
+  font-size: 60px;
+}
+.title span{
+  margin: -7px;
+}
+.btn{
+  background-color: transparent;
+  border: 4px solid #2eb2d3;
+  color: rgb(46, 178, 211);
+  font-size: 50px;
+  padding: 30px 40px;
+  transition: all ease .2s;
+  border-radius: 20px;
+
+}
+.btn:hover{
+  cursor: pointer;
+  font-size: 54px;
+  background-color: rgba(46, 178, 211,.2);
+}
 .sides{
   position: absolute;
   top: 100px;

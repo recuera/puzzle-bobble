@@ -18,7 +18,6 @@ Ball.prototype.renderBall = function(game, delta) {
   game.board.ctx.beginPath();
   game.board.ctx.fillStyle = this.color;
   game.board.ctx.arc(this.posX, this.posY, this.radius, 0, 2 * Math.PI);
-  game.board.ctx.fill();
 };
 
 Ball.prototype.updatePos = function(game) {
@@ -243,7 +242,3 @@ Ball.prototype.placeBallX = function(ball, ballRow) {
     }
   }
 };
-
-Ball.prototype.displayLevelBalls = function(){
-
-}
