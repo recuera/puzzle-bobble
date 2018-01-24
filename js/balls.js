@@ -65,13 +65,13 @@ Ball.prototype.checkBallsAround = function(game, ball){
   var checkX = this.posX;
   var checkY = this.posY;
   var collidingBalls = [];
-  game.topBalls.map(function(ball){
-    var distanceX = checkX - ball.posX;
-    var distanceY = checkY - ball.posY; 
+  game.topBalls.map(function(topBall){
+    var distanceX = checkX - topBall.posX;
+    var distanceY = checkY - topBall.posY; 
     //Math.abs convierte la distancia a un número positivo
     var distance = Math.abs(Math.sqrt( distanceX * distanceX + distanceY * distanceY ));
     if(distance <= game.newBall.radius * 2.5){
-      collidingBalls.push(ball)
+      collidingBalls.push(topBall)
     }
   })
   return collidingBalls;

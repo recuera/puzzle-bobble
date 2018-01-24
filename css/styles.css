@@ -7,3 +7,19 @@ body{
 canvas{
   border: 5px solid #85a5af;
 }
+.sides{
+  position: absolute;
+  top: 200px;
+}
+.sides span{
+  font-size: 48px;
+  font-weight: 800;
+}
+.score{
+  left: 50%;
+  margin-left: 300px;
+}
+.level{
+  right: 50%;
+  margin-right: 300px;
+}
