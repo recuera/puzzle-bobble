@@ -64,7 +64,7 @@ canvas,
   top: 0;
   left: 0;
   z-index: 5;
-  padding-top: 30vh;
+  padding-top: calc(50vh - 195px);
   background: #fff;
 }
 .intro-cover h1,

@@ -15,6 +15,7 @@ PuzzleBoard.prototype.renderBoard = function() {
 };
 
 PuzzleBoard.prototype.updateBoardSize = function(game){
+  roofSound.play();
   game.board.height -= 60;
   document.getElementById("canvas").setAttribute("height",game.board.height);
   game.board.bottomBarrierPos = game.board.height - 100;

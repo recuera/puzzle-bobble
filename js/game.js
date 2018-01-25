@@ -13,18 +13,18 @@ var PuzzleGame = function() {
   this.score = 0;
   this.ballPoints = 5;
   this.level = 0;
-  this.music = new Audio("sounds/puzzle_bobble.mp3")
+  //this.music = new Audio("sounds/puzzle_bobble.mp3")
 };
 
 PuzzleGame.prototype.startGame = function() {
   this.renderLevel(this);
   this.addBall(this);
   this.setRoofTimer(this);
-  this.music.play();
-  this.music.volume = 0.3;
+  music.play();
 };
 
 PuzzleGame.prototype.gameOver = function() {
+  failSound.play();
   clearInterval(roofTimer);
   showGameOver();
 };

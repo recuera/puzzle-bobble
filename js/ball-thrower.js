@@ -32,4 +32,5 @@ BallThrower.prototype.rotateThrower = function(board, direction) {
 BallThrower.prototype.throw = function(game){
   game.newBall.speed = -800;
   game.newBall.angle = game.thrower.angle;
+  throwSound.play();
 }

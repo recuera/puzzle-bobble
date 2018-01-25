@@ -41,6 +41,7 @@ Ball.prototype.updatePos = function(game) {
     this.angle = -game.newBall.angle;
     this.posX += this.speed * Math.cos(bounceAngleX) / 1000 * delta;
     this.posY += this.speed * Math.sin(correctAngle) / 1000 * delta;
+    bounceSound.play();
   } else if (this.mustStop(game)) {
     prevSpeed = this.speed;
     this.speed = 0;
@@ -101,6 +102,7 @@ Ball.prototype.removeBalls = function(ballsToRemove, game) {
   ballsToRemove.forEach(function(ball) {
     var i = game.topBalls.indexOf(ball);
     game.topBalls.splice(i, 1);
+    popSound.play();
   });
 };
 
@@ -232,6 +234,7 @@ Ball.prototype.placeBall = function(ball, game, prevSpeed) {
       game.gameOver();
     }
     this.checkBallsRemoval(game, ball);
+    bounceSound.play();
   }
 };
 

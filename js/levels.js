@@ -91,3 +91,20 @@ var levels = [
     new Ball(360, row(7), orange)
   ]
 ];
+
+var music = new Audio("sounds/puzzle_bobble.mp3");
+music.loop = true;
+music.volume = 0.3;
+var throwSound = new Audio("sounds/throw.wav");
+throwSound.volume = 0.3;
+var bounceSound = new Audio("sounds/bounce.wav");
+var popSound = new Audio("sounds/pop.flac");
+popSound.volume = 0.2;
+var goSound = new Audio("sounds/go.wav");
+goSound.volume = 0.3;
+var readySound = new Audio("sounds/ready.wav");
+readySound.volume = 0.3;
+var failSound = new Audio("sounds/fail.wav");
+var stickSound = new Audio("sounds/stick.wav");
+var roofSound = new Audio("sounds/roof.wav");
+readySound.volume = 0.2;

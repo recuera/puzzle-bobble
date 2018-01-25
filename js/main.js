@@ -6,6 +6,7 @@ window.onload = function() {
   document.getElementById("start").onclick = function() {
     $("#intro").fadeOut(800);
     game.startGame();
+    goSound.play();
   };
 
   document.getElementById("resetLevel").onclick = function(){
@@ -40,6 +41,7 @@ window.onload = function() {
         break;
     }
   };
+  readySound.play();
 };
 
 function showGameOver(){
