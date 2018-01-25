@@ -13,10 +13,9 @@
   <script src="./js/levels.js"></script>
   <script src="./js/game.js"></script>
   <script src="./js/main.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Dosis:800" rel="stylesheet">
 </head>
 <body>
-
-
   <div id="intro" class="intro-cover">
     <div class="intro-bg"></div>
       <div class="intro-content">
@@ -41,19 +40,19 @@
 
   <canvas id="canvas" width="480" height="700"></canvas>
   <div class="roof"></div>
-  <div id="levelContainer" class="sides level">
-      <h2>Puzzle <br> Bobble</h2>
-      <h3>LEVEL</h3>
-    <span id="level">1</span>
-  </div>
+  <div id="levelContainer" class="level">
+    <span id="level">1</span></div>
   <div id="scoreContainer" class="sides score">
-    <h3>SCORE</h3>
     <span id="score">0</span>
   </div>
   <div id="gameOver" class="game-over">
     <h2>GAME OVER :(</h2>
     <button id="resetLevel" class="btn btn-try">TRY AGAIN!</button>
   </div>
-  <div id="background" class="bg-img"></div>
+  <footer></footer>
+  <div id="background" class="bg-img">
+    <img class="monster-left" src="img/bichito-izq.jpg" alt="">
+    <img class="monster-right" src="img/bichito-der.jpg" alt="">
+  </div>
 </body>
 </html>

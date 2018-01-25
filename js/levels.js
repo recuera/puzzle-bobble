@@ -64,11 +64,11 @@ var levels = [
     new Ball(180, row(3), blue),
     new Ball(240, row(3), orange),
     new Ball(300, row(3), red),
-    new Ball(360, row(3), green),
+    new Ball(360, row(3), orange),
     new Ball(420, row(3), blue),
     new Ball(210, row(4), blue),
-    new Ball(240, row(5), orange),
-    new Ball(210, row(6), blue)
+    new Ball(240, row(5), green),
+    new Ball(210, row(6), green)
   ],
   [
     new Ball(90, row(0), orange),
