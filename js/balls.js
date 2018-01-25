@@ -230,11 +230,9 @@ Ball.prototype.placeBall = function(ball, game, prevSpeed) {
   }
   //Cuando la bola colisiona y debe detenerse:
   if (!ballShouldContinue) {
-    if (this.posY > game.board.bottomBarrierPos - this.radius) {
-      game.gameOver();
-    }
     this.checkBallsRemoval(game, ball);
     bounceSound.play();
+    game.checkGameOver();
   }
 };
 

@@ -9,7 +9,7 @@ PuzzleBoard.prototype.renderBoard = function() {
   this.ctx.save();
   this.ctx.fillStyle = "#f2f4f4";
   this.ctx.fillRect(0, 0, this.width, this.height);
-  this.ctx.fillStyle = "#85a5af";
+  this.ctx.fillStyle = "#103da2";
   this.ctx.fillRect(0, this.bottomBarrierPos, this.width, 5);
   this.ctx.restore();
 };

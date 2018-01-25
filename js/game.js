@@ -13,7 +13,6 @@ var PuzzleGame = function() {
   this.score = 0;
   this.ballPoints = 5;
   this.level = 0;
-  //this.music = new Audio("sounds/puzzle_bobble.mp3")
 };
 
 PuzzleGame.prototype.startGame = function() {
@@ -25,7 +24,7 @@ PuzzleGame.prototype.startGame = function() {
 
 PuzzleGame.prototype.gameOver = function() {
   failSound.play();
-  clearInterval(roofTimer);
+  clearInterval(window.roofTimer);
   showGameOver();
 };
 

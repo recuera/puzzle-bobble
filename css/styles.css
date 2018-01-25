@@ -4,7 +4,6 @@ body{
   text-align: center;
   font-family: 'Dosis', sans-serif;
   overflow: auto;
-  margin-bottom: 50px;
 }
 canvas,
 .game-over{
@@ -12,7 +11,7 @@ canvas,
   bottom: calc(100vh - 775px);
   left: 50vw;
   margin-left: -240px;
-  border: 5px solid #85a5af;
+  border: 5px solid #103da2;
   margin-top: 50px;
   z-index: 3;
 }
@@ -46,8 +45,9 @@ canvas,
   bottom: calc(100vh - 775px);
   left: 50vw;
   margin-left: -240px;
-  border: 5px solid #85a5af;
-  background: #85a5af;
+  border: 5px solid #103da2;
+  background-color: #85a5af;
+  background-image: url(../img/tile.jpg);
   margin-top: 50px;
   z-index: 1;
   box-shadow: 0 0 5px 0px rgba(0,0,0,.3);
@@ -86,14 +86,20 @@ canvas,
 .intro-bg{
   width: 100vw;
   height: 100vh;
- // background-image: url(../img/bg1.jpg);
+  background-image: url(../img/bg1.jpg);
   background-size: cover;
   background-position: 50% 50%;
-  opacity: .3;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 0;
+}
+.bg-img{
+  width: 100vw;
+  height: 100vh;
+  background-image: url(../img/bg1.jpg);
+  background-size: cover;
+  background-position: 50% 50%;
 }
 .blue{color:#2eb2d3;}
 .red{color: #d11027;}
@@ -130,7 +136,7 @@ canvas,
   top: 60px;
   left: 50%;
   position: absolute;
-  background-image: url(../img/score.jpg);
+  background-image: url(../img/score.png);
   background-size: 200px;
   background-position: 5px;
   background-repeat: no-repeat;
@@ -151,7 +157,7 @@ canvas,
   top: 250px;
   left: 50%;
   position: absolute;
-  background-image: url(../img/level.jpg);
+  background-image: url(../img/level.png);
   background-size: 150px;
   background-position: 16px 20px;
   line-height: 230px;
