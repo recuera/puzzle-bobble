@@ -15,9 +15,19 @@ PuzzleBoard.prototype.renderBoard = function() {
 };
 
 PuzzleBoard.prototype.updateBoardSize = function(game){
-  this.height = this.height -= 60;
+  game.board.height -= 60;
+  document.getElementById("canvas").setAttribute("height",game.board.height);
+  game.board.bottomBarrierPos = game.board.height - 100;
+  game.newBall.posY = game.newBall.posY - 60;
+  game.thrower.posY = this.height - marginBottom;
+  game.checkGameOver()
+}
+
+PuzzleBoard.prototype.resetBoardSize = function(game){
+  this.height = initialHeight;
   this.bottomBarrierPos = this.height - 100;
   document.getElementById("canvas").setAttribute("height",this.height);
   game.newBall.posY = game.newBall.posY - 60;
   game.thrower.posY = this.height - marginBottom;
 }
+

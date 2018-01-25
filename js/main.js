@@ -8,6 +8,11 @@ window.onload = function() {
     game.startGame();
   };
 
+  document.getElementById("resetLevel").onclick = function(){
+    $("#gameOver").fadeOut();
+    game.resetLevel();
+  }
+
   document.onkeydown = function(e) {
     switch (e.keyCode) {
       case 37: // izquierda
@@ -40,3 +45,4 @@ window.onload = function() {
 function showGameOver(){
   $("#gameOver").fadeIn();
 }
+

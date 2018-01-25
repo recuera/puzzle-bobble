@@ -15,7 +15,7 @@ var PuzzleGame = function() {
 };
 
 PuzzleGame.prototype.startGame = function() {
-  this.renderLevel();
+  this.renderLevel(this);
   this.addBall(this);
   this.setRoofTimer(this);
 };
@@ -23,7 +23,6 @@ PuzzleGame.prototype.startGame = function() {
 PuzzleGame.prototype.gameOver = function() {
   clearInterval(roofTimer);
   showGameOver();
-  console.log("GAME OVER :(");
 };
 
 PuzzleGame.prototype.move_thrower = function() {
@@ -70,6 +69,18 @@ PuzzleGame.prototype.renderGame = function(game) {
   });
 };
 
+PuzzleGame.prototype.checkGameOver = function(){
+  var lowestBall = 0;
+  this.topBalls.forEach(function(e){
+    if (e.posY > lowestBall){
+      lowestBall = e.posY;
+    }
+  })
+  if (lowestBall > this.board.bottomBarrierPos - 30) {
+    this.gameOver();
+  }
+}
+
 PuzzleGame.prototype.addBall = function(game) {
   randomColor = ballColors[Math.floor(Math.random() * ballColors.length)];
   this.newBall = new Ball(this.board.width / 2, this.board.height - marginBottom, randomColor);
@@ -95,20 +106,17 @@ PuzzleGame.prototype.renderLevel = function(){
 
 PuzzleGame.prototype.nextLevel = function(){
   this.level += 1;
+  this.board.resetBoardSize(this);
   this.renderLevel();
 }
 
 PuzzleGame.prototype.setRoofTimer = function(game){
   roofTimer = setInterval(function(){
     game.board.updateBoardSize(game);
-  }, 1000);
-  var lowestBall = 0;
-  this.topBalls.forEach(function(e){
-    if (e.posY > lowestBall){
-      lowestBall += e.posY;
-    }
-  })
-  if (lowestBall > game.board.bottomBarrierPos - this.newBall.radius) {
-    game.gameOver();
-  }
+  }, 15000);
+}
+PuzzleGame.prototype.resetLevel = function(game){
+  this.setRoofTimer(game);
+  this.board.resetBoardSize(this);
+  this.renderLevel();
 }

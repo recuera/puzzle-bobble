@@ -90,7 +90,7 @@ Ball.prototype.checkBallsAround = function(game, ball) {
     var distance = Math.abs(
       Math.sqrt(distanceX * distanceX + distanceY * distanceY)
     );
-    if (distance <= game.newBall.radius * 2.5) {
+    if (distance <= game.newBall.radius * 2 + 1) {
       collidingBalls.push(topBall);
     }
   });
