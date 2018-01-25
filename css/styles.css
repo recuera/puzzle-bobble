@@ -4,7 +4,8 @@ body{
   text-align: center;
   font-family: sans-serif;
 }
-canvas{
+canvas,
+.game-over{
   position: fixed;
   bottom: calc(100vh - 775px);
   left: 50vw;
@@ -12,6 +13,24 @@ canvas{
   border: 5px solid #85a5af;
   margin-top: 50px;
   z-index: 3;
+}
+.game-over{
+  box-sizing: border-box;
+  height: 710px;
+  width: 490px;
+  z-index: 4;
+  background: rgba(0, 2, 0, .5);
+  padding-top: 200px;
+  box-shadow: 0 0 5px 0px rgba(0,0,0,.3);
+  display: none;
+}
+.game-over .btn:hover{
+  background-color: rgba(255, 255, 255,.9);
+}
+.game-over h2{
+  color: #fff;
+  font-size: 40px;
+  text-shadow:0px 0px 10px rgba(0,0,0,.5)
 }
 .bg-img{
   position: fixed;
@@ -32,6 +51,7 @@ canvas{
   background: #85a5af;
   margin-top: 50px;
   z-index: 1;
+  box-shadow: 0 0 5px 0px rgba(0,0,0,.3);
 }
 .hidden{
   display: none;
@@ -48,7 +68,7 @@ canvas{
   background: #fff;
 }
 .intro-cover h1,
-.intro-cover btn{
+.intro-cover .btn{
   z-index: 5;
 }
 .intro-cover h1{
@@ -66,7 +86,7 @@ canvas{
 .intro-bg{
   width: 100vw;
   height: 100vh;
-  background-image: url(../img/bg1.jpg);
+ // background-image: url(../img/bg1.jpg);
   background-size: cover;
   background-position: 50% 50%;
   opacity: .3;
@@ -88,6 +108,7 @@ canvas{
 .btn{
   background-color: transparent;
   border: 4px solid #2eb2d3;
+  background: #fff;
   color: rgb(46, 178, 211);
   font-size: 50px;
   padding: 30px 40px;

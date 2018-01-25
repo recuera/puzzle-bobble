@@ -36,3 +36,7 @@ window.onload = function() {
     }
   };
 };
+
+function showGameOver(){
+  $("#gameOver").fadeIn();
+}

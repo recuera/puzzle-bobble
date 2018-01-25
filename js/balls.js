@@ -19,6 +19,18 @@ Ball.prototype.renderBall = function(game, delta) {
   game.board.ctx.fillStyle = this.color;
   game.board.ctx.arc(this.posX, this.posY, this.radius, 0, 2 * Math.PI);
   game.board.ctx.fill();
+  game.board.ctx.save();
+  game.board.ctx.beginPath();
+  game.board.ctx.filter = 'blur(5px)';
+  game.board.ctx.fillStyle = "rgba(255,255,255,.4";
+  game.board.ctx.arc(this.posX - 6, this.posY - 5, 8, 0, 2 * Math.PI);
+  game.board.ctx.fill();
+  game.board.ctx.beginPath();
+  game.board.ctx.strokeStyle = "rgba(255,255,255,.5";
+  game.board.ctx.lineWidth = 4;
+  game.board.ctx.arc(this.posX, this.posY, this.radius, 0, 2 * Math.PI);
+  game.board.ctx.stroke();
+  game.board.ctx.restore();
 };
 
 Ball.prototype.updatePos = function(game) {
