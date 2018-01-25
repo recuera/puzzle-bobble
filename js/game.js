@@ -12,13 +12,16 @@ var PuzzleGame = function() {
   this.topBalls = [];
   this.score = 0;
   this.ballPoints = 5;
-  this.level = 0
+  this.level = 0;
+  this.music = new Audio("sounds/puzzle_bobble.mp3")
 };
 
 PuzzleGame.prototype.startGame = function() {
   this.renderLevel(this);
   this.addBall(this);
   this.setRoofTimer(this);
+  this.music.play();
+  this.music.volume = 0.3;
 };
 
 PuzzleGame.prototype.gameOver = function() {
@@ -102,7 +105,7 @@ PuzzleGame.prototype.updateLevel = function(){
 
 PuzzleGame.prototype.renderLevel = function(){
   var currentLevel = this.level;
-  this.topBalls = levels[currentLevel];
+  this.topBalls = levels[currentLevel].slice();;
   this.newBall.posY = this.board.height - marginBottom;
 }
 
