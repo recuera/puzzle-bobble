@@ -3,6 +3,7 @@ var delta = 0;
 var initialHeight = 700;
 var marginBottom = 40;
 var roofTimer;
+var currentLevelLength = levels[0].length;
 
 var PuzzleGame = function() {
   this.board = new PuzzleBoard();
@@ -102,12 +103,15 @@ PuzzleGame.prototype.updateLevel = function(){
 PuzzleGame.prototype.renderLevel = function(){
   var currentLevel = this.level;
   this.topBalls = levels[currentLevel];
+  this.newBall.posY = this.board.height - marginBottom;
 }
 
 PuzzleGame.prototype.nextLevel = function(){
   this.level += 1;
+  currentLevelLength = levels[this.level].length;
   this.board.resetBoardSize(this);
   this.renderLevel();
+  $("#level").html(this.level + 1)
 }
 
 PuzzleGame.prototype.setRoofTimer = function(game){
@@ -115,7 +119,9 @@ PuzzleGame.prototype.setRoofTimer = function(game){
     game.board.updateBoardSize(game);
   }, 15000);
 }
+
 PuzzleGame.prototype.resetLevel = function(game){
+  levels[this.level].splice(currentLevelLength ,levels[this.level].length);
   this.setRoofTimer(game);
   this.board.resetBoardSize(this);
   this.renderLevel();

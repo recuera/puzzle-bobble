@@ -10,7 +10,7 @@ window.onload = function() {
 
   document.getElementById("resetLevel").onclick = function(){
     $("#gameOver").fadeOut();
-    game.resetLevel();
+    game.resetLevel(game);
   }
 
   document.onkeydown = function(e) {
