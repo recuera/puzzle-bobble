@@ -1,8 +1,10 @@
+
+/* COLORS */ 
 var blue = "#2eb2d3";
 var red = "#d11027";
 var green = "#23a85a";
 var orange = "#e86800";
-var ballColors = [blue, red, green, orange];
+var ballColors = [blue, red, green, orange]
 
 var Ball = function(posX, posY, color) {
   this.radius = 30;
@@ -104,6 +106,7 @@ Ball.prototype.removeBalls = function(ballsToRemove, game) {
     game.topBalls.splice(i, 1);
     popSound.play();
   });
+  game.checkColorRemoval(game);
 };
 
 Ball.prototype.findMatchingBalls = function(ball, arr) {

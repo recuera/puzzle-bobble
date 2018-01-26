@@ -1,3 +1,4 @@
+/* LEVELS */ 
 function row(x){
   var rowDistance = 30 * Math.sqrt(3);
   return 30 + (rowDistance * x);
@@ -92,6 +93,7 @@ var levels = [
   ]
 ];
 
+/* MUSIC */ 
 var music = new Audio("sounds/puzzle_bobble.mp3");
 music.loop = true;
 music.volume = 0.3;

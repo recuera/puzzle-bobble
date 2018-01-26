@@ -13,6 +13,7 @@ var PuzzleGame = function() {
   this.score = 0;
   this.ballPoints = 5;
   this.level = 0;
+  this.levelColors = ballColors.slice(0);
 };
 
 PuzzleGame.prototype.startGame = function() {
@@ -85,7 +86,7 @@ PuzzleGame.prototype.checkGameOver = function(){
 }
 
 PuzzleGame.prototype.addBall = function(game) {
-  randomColor = ballColors[Math.floor(Math.random() * ballColors.length)];
+  randomColor = game.levelColors[Math.floor(Math.random() * game.levelColors.length)];
   this.newBall = new Ball(this.board.width / 2, this.board.height - marginBottom, randomColor);
 };
 
@@ -109,6 +110,8 @@ PuzzleGame.prototype.renderLevel = function(){
 }
 
 PuzzleGame.prototype.nextLevel = function(){
+  console.log(ballColors)
+  this.levelColors = ballColors.slice(0);
   this.level += 1;
   currentLevelLength = levels[this.level].length;
   this.board.resetBoardSize(this);
@@ -127,4 +130,17 @@ PuzzleGame.prototype.resetLevel = function(game){
   this.setRoofTimer(game);
   this.board.resetBoardSize(this);
   this.renderLevel();
+}
+PuzzleGame.prototype.checkColorRemoval = function(game){
+  var remainingColors = [];
+  game.topBalls.forEach(function(e){
+    if(!remainingColors.includes(e.color)){
+      remainingColors.push(e.color);
+    }
+  })
+  for(i = 0; i < game.levelColors.length; i++){
+    if(!remainingColors.includes(game.levelColors[i])){
+      game.levelColors.splice(i, 1);
+    };
+  };
 }
