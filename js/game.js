@@ -24,9 +24,9 @@ PuzzleGame.prototype.startGame = function() {
 };
 
 PuzzleGame.prototype.gameOver = function() {
-  failSound.play();
   clearInterval(window.roofTimer);
   showGameOver();
+  failSound.play();
 };
 
 PuzzleGame.prototype.move_thrower = function() {
@@ -127,6 +127,7 @@ PuzzleGame.prototype.setRoofTimer = function(game){
 
 PuzzleGame.prototype.resetLevel = function(game){
   levels[this.level].splice(currentLevelLength ,levels[this.level].length);
+  this.levelColors = ballColors.slice(0);
   this.setRoofTimer(game);
   this.board.resetBoardSize(this);
   this.renderLevel();
