@@ -7,7 +7,8 @@ body{
 }
 canvas,
 .game-over,
-.next-level{
+.next-level,
+.win{
   position: absolute;
   bottom: calc(100vh - 775px);
   left: 50vw;
@@ -17,7 +18,8 @@ canvas,
   z-index: 3;
 }
 .game-over,
-.next-level{
+.next-level,
+.win{
   box-sizing: border-box;
   height: 710px;
   width: 490px;
@@ -26,6 +28,15 @@ canvas,
   padding-top: 200px;
   box-shadow: 0 0 5px 0px rgba(0,0,0,.3);
   display: none;
+}
+.win{
+  padding-top: 170px;
+  line-height: 30px;
+  background: rgba(46, 178, 211,.7);
+}
+.win h2{
+  color: #fff;
+  font-size: 100px;
 }
 .next-level{
   font-size: 80px;

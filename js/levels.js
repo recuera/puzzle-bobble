@@ -111,3 +111,4 @@ var stickSound = new Audio("sounds/stick.wav");
 var roofSound = new Audio("sounds/roof.wav");
 readySound.volume = 0.2;
 var levelSound = new Audio("sounds/level.wav");
+var winSound = new Audio("sounds/win.wav");

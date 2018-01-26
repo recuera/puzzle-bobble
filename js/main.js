@@ -53,3 +53,6 @@ function showNextLevel(){
 function hideNextLevel(){
   $("#next").delay(600).fadeOut();
 }
+function showWin(){
+  $("#win").fadeIn(200);
+}

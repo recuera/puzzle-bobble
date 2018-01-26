@@ -110,6 +110,12 @@ PuzzleGame.prototype.renderLevel = function(){
 }
 
 PuzzleGame.prototype.nextLevel = function(){
+  if(this.level == levels.length - 1){
+    winSound.play();
+    showWin();
+    clearInterval(window.roofTimer);
+    return;
+  }
   levelSound.play();
   this.levelColors = ballColors.slice(0);
   this.level += 1;
