@@ -110,9 +110,12 @@ PuzzleGame.prototype.renderLevel = function(){
 }
 
 PuzzleGame.prototype.nextLevel = function(){
-  console.log(ballColors)
+  levelSound.play();
   this.levelColors = ballColors.slice(0);
   this.level += 1;
+  $("#next-level").html(this.level + 1)
+  showNextLevel()
+  hideNextLevel();
   currentLevelLength = levels[this.level].length;
   this.board.resetBoardSize(this);
   this.renderLevel();

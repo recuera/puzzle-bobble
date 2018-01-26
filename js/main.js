@@ -12,7 +12,7 @@ window.onload = function() {
   document.getElementById("resetLevel").onclick = function(){
     $("#gameOver").fadeOut();
     game.resetLevel(game);
-  }
+  };
 
   document.onkeydown = function(e) {
     switch (e.keyCode) {
@@ -46,4 +46,10 @@ window.onload = function() {
 
 function showGameOver(){
   $("#gameOver").fadeIn();
+}
+function showNextLevel(){
+  $("#next").show();
+}
+function hideNextLevel(){
+  $("#next").delay(600).fadeOut();
 }

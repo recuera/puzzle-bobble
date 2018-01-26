@@ -110,3 +110,4 @@ var failSound = new Audio("sounds/fail.wav");
 var stickSound = new Audio("sounds/stick.wav");
 var roofSound = new Audio("sounds/roof.wav");
 readySound.volume = 0.2;
+var levelSound = new Audio("sounds/level.wav");
